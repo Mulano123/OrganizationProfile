@@ -32,7 +32,7 @@ namespace OrganizationProfile
             lblBirthday.Text = studentInformationClass.SetBirthday.ToString();
             lblGender.Text = studentInformationClass.SetGender;
             lblContactNo.Text = studentInformationClass.SetContactNo.ToString();
-            lblAge.Text = studentInformationClass.SetAge.ToString();
+            lblAge.Text = studentInformationClass.SetAge.ToString(); 
 
         }
     }

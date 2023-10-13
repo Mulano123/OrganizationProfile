@@ -87,12 +87,12 @@ namespace OrganizationProfile
         private void btnRegistration_Click(object sender, EventArgs e)
         {
             studentInformationClass.SetFullName = FullName(txtLastName.Text,txtFirstName.Text, txtMiddleInitial.Text);
-            studentInformationClass.SetStudentNo = (int)StudentNumber(txtStudentNo.Text);
+            studentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
             studentInformationClass.SetProgram = cbPrograms.Text;
             studentInformationClass.SetGender = cbGender.Text;
-            studentInformationClass.SetContactNo = (int)ContactNo(txtContactNo.Text);
-            studentInformationClass.SetAge = (int)Age(txtAge.Text); 
-            studentInformationClass.SetBirthday = datePickerBirthday.Value.ToString("yyyyMM-dd");
+            studentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
+            studentInformationClass.SetAge = Age(txtAge.Text); 
+            studentInformationClass.SetBirthday = datePickerBirthday.Value.ToString("yyyy-MM-dd");
             frmConfirmation frm = new frmConfirmation();
             frm.ShowDialog();
 
