@@ -9,15 +9,13 @@ namespace OrganizationProfile
     internal class StudentInformationClass
     {
 
-        public long SetStudentNo = 0;
-        public long SetContactNo = 0;
-        public string SetProgram = " ";
-        public string SetGender = " ";
-        public string SetBirthday = " ";
-        public string SetFullName = " ";
-        public int SetAge = 0;
-
-
+        public static long SetStudentNo = 0;
+        public static long SetContactNo = 0;
+        public static int SetAge = 0;
+        public static string SetProgram = " ";
+        public static string SetGender = " ";
+        public static string SetBirthday = " ";
+        public static string SetFullName = " ";
 
     }
 }

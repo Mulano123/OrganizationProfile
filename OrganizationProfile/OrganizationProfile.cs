@@ -14,9 +14,6 @@ namespace OrganizationProfile
 {
     public partial class frmRegistration : Form
     {
-
-        StudentInformationClass studentInformationClass = new StudentInformationClass();
-
         public frmRegistration()
         {
             InitializeComponent();
@@ -39,6 +36,13 @@ namespace OrganizationProfile
                 cbPrograms.Items.Add(ListOfPrograms[i].ToString());
             }
 
+            string[] listOfGender = new string[] { "Male", "Female" };
+
+            for (int i = 0; i < 2; i++)
+            {
+                cbGender.Items.Add(listOfGender[i].ToString());
+            }
+
         }
 
         private string _FullName;
@@ -52,13 +56,29 @@ namespace OrganizationProfile
             _StudentNo = long.Parse(studNum);
 
             return _StudentNo;
+
         }
 
         public long ContactNo(string Contact)
         {
-            if (Regex.IsMatch(Contact, @"^[0-9]{10,11}$"))
+            try
             {
-                _ContactNo = long.Parse(Contact);
+                if (Regex.IsMatch(Contact, @"^[0-9]{10,11}$"))
+                {
+                    _ContactNo = long.Parse(Contact);
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException("Index out of range!!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Message : " + ex);
+            }
+            finally
+            {
+                Console.WriteLine("Invalid Input! Please input 11 digit number only.");
             }
 
             return _ContactNo;
@@ -66,9 +86,24 @@ namespace OrganizationProfile
 
         public string FullName(string LastName, string FirstName, string MiddleInitial)
         {
-            if (Regex.IsMatch(LastName, @"^[a-zA-Z]+$") || Regex.IsMatch(FirstName, @"^[a-zA-Z]+$") || Regex.IsMatch(MiddleInitial, @"^[a-zA-Z]+$"))
+            try
             {
-                _FullName = LastName + ", " + FirstName + ", " + MiddleInitial;
+                if (Regex.IsMatch(LastName, @"^[a-zA-Z]+$") || Regex.IsMatch(FirstName, @"^[a-zA-Z]+$") || Regex.IsMatch(MiddleInitial, @"^[a-zA-Z]+$"))
+                {
+                    _FullName = LastName + ", " + FirstName + ", " + MiddleInitial;
+                }
+                else
+                {
+                    throw new ArgumentNullException("");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("");
+            }
+            finally
+            {
+                MessageBox.Show("");
             }
 
             return _FullName;
@@ -76,9 +111,24 @@ namespace OrganizationProfile
 
         public int Age(string age)
         {
-            if (Regex.IsMatch(age, @"^[0-9]{1,3}$"))
+            try
             {
-                _Age = Int32.Parse(age);
+                if (Regex.IsMatch(age, @"^[0-9]{1,3}$"))
+                {
+                    _Age = Int32.Parse(age);
+                }
+                else
+                {
+                    throw new OverflowException("");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("");
+            }
+            finally
+            {
+                MessageBox.Show("");
             }
 
             return _Age;
@@ -86,13 +136,14 @@ namespace OrganizationProfile
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
-            studentInformationClass.SetFullName = FullName(txtLastName.Text,txtFirstName.Text, txtMiddleInitial.Text);
-            studentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
-            studentInformationClass.SetProgram = cbPrograms.Text;
-            studentInformationClass.SetGender = cbGender.Text;
-            studentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
-            studentInformationClass.SetAge = Age(txtAge.Text); 
-            studentInformationClass.SetBirthday = datePickerBirthday.Value.ToString("yyyy-MM-dd");
+
+            StudentInformationClass.SetFullName = FullName(txtLastName.Text, txtFirstName.Text, txtMiddleInitial.Text);
+            StudentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
+            StudentInformationClass.SetProgram = cbPrograms.Text;
+            StudentInformationClass.SetGender = cbGender.Text;
+            StudentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
+            StudentInformationClass.SetAge = Age(txtAge.Text);
+            StudentInformationClass.SetBirthday = datePickerBirthday.Value.ToString("yyyy-MM-dd");
             frmConfirmation frm = new frmConfirmation();
             frm.ShowDialog();
 
