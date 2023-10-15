@@ -72,6 +72,7 @@ namespace OrganizationProfile
             }
 
             return _StudentNo;
+
         }
 
         public long ContactNo(string Contact)
@@ -133,6 +134,10 @@ namespace OrganizationProfile
             {
                 MessageBox.Show("Message : " + oex);
             }
+            finally
+            {
+                MessageBox.Show("Please fill up correctly.");
+            }
             return _Age;
         }
 
@@ -140,15 +145,15 @@ namespace OrganizationProfile
         private void btnRegistration_Click(object sender, EventArgs e)
         {
 
-                StudentInformationClass.SetFullName = FullName(txtLastName.Text, txtFirstName.Text, txtMiddleInitial.Text);
-                StudentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
-                StudentInformationClass.SetProgram = cbPrograms.Text;
-                StudentInformationClass.SetGender = cbGender.Text;
-                StudentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
-                StudentInformationClass.SetAge = Age(txtAge.Text);
-                StudentInformationClass.SetBirthday = datePickerBirtday.Value.ToString("yyyy-MM-dd");
-                frmConfirmation frm = new frmConfirmation();
-                frm.Show();       
+            StudentInformationClass.SetFullName = FullName(txtLastName.Text, txtFirstName.Text, txtMiddleInitial.Text);
+            StudentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
+            StudentInformationClass.SetProgram = cbPrograms.Text;
+            StudentInformationClass.SetGender = cbGender.Text;
+            StudentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
+            StudentInformationClass.SetAge = Age(txtAge.Text);
+            StudentInformationClass.SetBirthday = datePickerBirtday.Value.ToString("yyyy-MM-dd");
+            frmConfirmation frm = new frmConfirmation();
+            frm.ShowDialog();
 
         }
     }
