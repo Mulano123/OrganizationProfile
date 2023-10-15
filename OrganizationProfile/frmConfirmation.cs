@@ -13,15 +13,9 @@ namespace OrganizationProfile
 {
     public partial class frmConfirmation : Form
     {
-        //StudentInformationClass studentInformationClass = new StudentInformationClass();
         public frmConfirmation()
         {
             InitializeComponent();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void frmConfirmation_Load(object sender, EventArgs e)

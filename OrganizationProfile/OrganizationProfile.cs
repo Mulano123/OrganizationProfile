@@ -36,7 +36,7 @@ namespace OrganizationProfile
                 cbPrograms.Items.Add(ListOfPrograms[i].ToString());
             }
 
-            string[] listOfGender = new string[] { "Male", "Female" };
+            string[] listOfGender = new string[] {
 
             for (int i = 0; i < 2; i++)
             {
@@ -53,10 +53,7 @@ namespace OrganizationProfile
         public long StudentNumber(string studNum)
         {
 
-            _StudentNo = long.Parse(studNum);
-
             return _StudentNo;
-
         }
 
         public long ContactNo(string Contact)
@@ -72,13 +69,9 @@ namespace OrganizationProfile
                     throw new IndexOutOfRangeException("Index out of range!!");
                 }
             }
-            catch (Exception ex)
+            catch (IndexOutOfRangeException ix)
             {
-                MessageBox.Show("Message : " + ex);
-            }
-            finally
-            {
-                Console.WriteLine("Invalid Input! Please input 11 digit number only.");
+                MessageBox.Show("Message : " + ix);
             }
 
             return _ContactNo;
@@ -101,11 +94,6 @@ namespace OrganizationProfile
             {
                 MessageBox.Show("");
             }
-            finally
-            {
-                MessageBox.Show("");
-            }
-
             return _FullName;
         }
 
@@ -113,26 +101,11 @@ namespace OrganizationProfile
         {
             try
             {
-                if (Regex.IsMatch(age, @"^[0-9]{1,3}$"))
-                {
-                    _Age = Int32.Parse(age);
-                }
-                else
-                {
-                    throw new OverflowException("");
-                }
+                throw new OverflowException("Plese enter your real age!");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("");
-            }
-            finally
-            {
-                MessageBox.Show("");
-            }
-
             return _Age;
         }
+
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
