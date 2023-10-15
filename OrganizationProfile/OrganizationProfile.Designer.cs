@@ -47,14 +47,14 @@
             txtContactNo = new TextBox();
             cbPrograms = new ComboBox();
             cbGender = new ComboBox();
-            datePickerBirthday = new DateTimePicker();
+            datePickerBirtday = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(14, 31);
+            label1.Location = new Point(489, 38);
             label1.Name = "label1";
             label1.Size = new Size(170, 35);
             label1.TabIndex = 0;
@@ -236,22 +236,22 @@
             cbGender.Size = new Size(138, 34);
             cbGender.TabIndex = 18;
             // 
-            // datePickerBirthday
+            // datePickerBirtday
             // 
-            datePickerBirthday.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            datePickerBirthday.Location = new Point(218, 390);
-            datePickerBirthday.Margin = new Padding(3, 4, 3, 4);
-            datePickerBirthday.Name = "datePickerBirthday";
-            datePickerBirthday.Size = new Size(347, 35);
-            datePickerBirthday.TabIndex = 19;
+            datePickerBirtday.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            datePickerBirtday.Location = new Point(218, 390);
+            datePickerBirtday.Margin = new Padding(3, 4, 3, 4);
+            datePickerBirtday.Name = "datePickerBirtday";
+            datePickerBirtday.Size = new Size(347, 35);
+            datePickerBirtday.TabIndex = 19;
             // 
             // frmRegistration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 192, 192);
+            BackColor = Color.PowderBlue;
             ClientSize = new Size(1195, 704);
-            Controls.Add(datePickerBirthday);
+            Controls.Add(datePickerBirtday);
             Controls.Add(cbGender);
             Controls.Add(cbPrograms);
             Controls.Add(txtContactNo);
@@ -300,6 +300,6 @@
         private TextBox txtContactNo;
         private ComboBox cbPrograms;
         private ComboBox cbGender;
-        private DateTimePicker datePickerBirthday;
+        private DateTimePicker datePickerBirtday;
     }
 }

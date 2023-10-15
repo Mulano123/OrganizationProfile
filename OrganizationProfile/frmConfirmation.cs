@@ -29,7 +29,11 @@ namespace OrganizationProfile
             lblGender.Text = StudentInformationClass.SetGender;
             lblContactNo.Text = StudentInformationClass.SetContactNo.ToString();
 
+        }
 
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

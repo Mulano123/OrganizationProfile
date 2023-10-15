@@ -37,6 +37,9 @@ namespace OrganizationProfile
             }
 
             string[] listOfGender = new string[] {
+                "Male",
+                "Female"
+            };
 
             for (int i = 0; i < 2; i++)
             {
@@ -52,6 +55,21 @@ namespace OrganizationProfile
 
         public long StudentNumber(string studNum)
         {
+            try
+            {
+                if (Regex.IsMatch(studNum, @"^[0-9]{10,11}$"))
+                {
+                    _StudentNo = long.Parse(studNum);
+                }
+                else
+                {
+                    throw new FormatException("Please enter digits only!");
+                }
+            }
+            catch (Exception fme)
+            {
+                MessageBox.Show("Message : " + fme);
+            }
 
             return _StudentNo;
         }
@@ -66,12 +84,12 @@ namespace OrganizationProfile
                 }
                 else
                 {
-                    throw new IndexOutOfRangeException("Index out of range!!");
+                    throw new IndexOutOfRangeException("Please enter 11 digits only!");
                 }
             }
-            catch (IndexOutOfRangeException ix)
+            catch (Exception ixr)
             {
-                MessageBox.Show("Message : " + ix);
+                MessageBox.Show("Message : " + ixr);
             }
 
             return _ContactNo;
@@ -87,13 +105,14 @@ namespace OrganizationProfile
                 }
                 else
                 {
-                    throw new ArgumentNullException("");
+                    throw new ArgumentNullException("LastName, FirstName, and MiddleInitial Textbox is empty!!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception ane)
             {
-                MessageBox.Show("");
+                MessageBox.Show("Message: " + ane);
             }
+
             return _FullName;
         }
 
@@ -101,7 +120,18 @@ namespace OrganizationProfile
         {
             try
             {
-                throw new OverflowException("Plese enter your real age!");
+                if (Regex.IsMatch(age, @"^[0-9]{1,3}$"))
+                {
+                    _Age = Int32.Parse(age);
+                }
+                else
+                {
+                    throw new OverflowException("Plese enter your real age!");
+                }
+            }
+            catch (Exception oex)
+            {
+                MessageBox.Show("Message : " + oex);
             }
             return _Age;
         }
@@ -110,16 +140,15 @@ namespace OrganizationProfile
         private void btnRegistration_Click(object sender, EventArgs e)
         {
 
-            StudentInformationClass.SetFullName = FullName(txtLastName.Text, txtFirstName.Text, txtMiddleInitial.Text);
-            StudentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
-            StudentInformationClass.SetProgram = cbPrograms.Text;
-            StudentInformationClass.SetGender = cbGender.Text;
-            StudentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
-            StudentInformationClass.SetAge = Age(txtAge.Text);
-            StudentInformationClass.SetBirthday = datePickerBirthday.Value.ToString("yyyy-MM-dd");
-            frmConfirmation frm = new frmConfirmation();
-            frm.ShowDialog();
-
+                StudentInformationClass.SetFullName = FullName(txtLastName.Text, txtFirstName.Text, txtMiddleInitial.Text);
+                StudentInformationClass.SetStudentNo = StudentNumber(txtStudentNo.Text);
+                StudentInformationClass.SetProgram = cbPrograms.Text;
+                StudentInformationClass.SetGender = cbGender.Text;
+                StudentInformationClass.SetContactNo = ContactNo(txtContactNo.Text);
+                StudentInformationClass.SetAge = Age(txtAge.Text);
+                StudentInformationClass.SetBirthday = datePickerBirtday.Value.ToString("yyyy-MM-dd");
+                frmConfirmation frm = new frmConfirmation();
+                frm.Show();       
 
         }
     }
